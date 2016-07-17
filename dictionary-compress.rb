@@ -1,12 +1,8 @@
 require 'zlib'
 abort 'No input file specified' if ARGV.empty?
 
-def min(a, b)
-  a < b ? a : b
-end
-
 def count_commons_initial_letters(last, current) 
-  (0 .. min(last.length, current.length)).each do |i|
+  (0 .. [last.length, current.length].min).each do |i|
     return i if last[i] != current[i]
   end
 end
