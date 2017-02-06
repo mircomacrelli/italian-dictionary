@@ -1,8 +1,8 @@
 require 'zlib'
 abort 'No input file specified' if ARGV.empty?
 
-File.open(File.basename(ARGV.first, '.fc'), 'w') do |out|
-  Zlib::GzipReader.open(ARGV.first) do |gz|
+Zlib::GzipReader.open(ARGV.first) do |gz|
+  File.open(File.basename(ARGV.first, '.fc'), 'w') do |out|
     last = ''
     until gz.eof
       counter = gz.getc.ord
